@@ -1,0 +1,29 @@
+# Installing first time
+-----------------------
+sudo apt install git
+cd ~
+git clone https://github.com/mjl3434/mjlenv.git ~/.mjlenv
+~/.mjlenv/setUpEnvironment.sh
+
+Get latest from github:
+-----------------------
+cd ~/.mjlenv
+git update
+
+
+Publish latest version to github:
+---------------------------------
+cd ~/.mjlenv
+git add <newFiles>  # Add any new files
+git commit -a       # This will ask for commit notes
+git push            # This will ask for username: mjl3434 and password: XXX
+
+Files and folders
+-----------------
+.mjlenv - Root folder for project
+    gvimrc - The .gvimrc file
+    vimrc - The .vimrc file
+    README - This file
+    setUpEnvironment.sh -- Script to be called once after instllation
+    bashrc_mjl - Custom bashrc script
+    LICENSE - MIT License File, because true freedom

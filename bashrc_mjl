@@ -1,0 +1,8 @@
+#!/bin/bash
+
+unalias ll 2>/dev/null
+alias ll='ls -l'
+alias vi='vim'
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
