@@ -1,6 +1,8 @@
 # Installing first time
 -----------------------
 sudo apt install git
+git config --global user.name "Mark Larwill"
+git config --global user.email "larwill@gmail.com
 cd ~
 git clone https://github.com/mjl3434/mjlenv.git ~/.mjlenv
 ~/.mjlenv/setUpEnvironment.sh
