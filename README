@@ -8,8 +8,7 @@ git clone https://github.com/mjl3434/mjlenv.git ~/.mjlenv
 Get latest from github:
 -----------------------
 cd ~/.mjlenv
-git update
-
+git pull
 
 Publish latest version to github:
 ---------------------------------
