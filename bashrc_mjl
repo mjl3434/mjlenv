@@ -6,3 +6,27 @@ alias vi='vim'
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
+
+export HISTSIZE=1000
+export HISTFILESIZE=2000
+
+SHELL_TYPE=$(basename $(echo $SHELL))
+if [ $SHELL_TYPE = 'zsh' ]; then
+
+    # Settings related to Cisco Meraki
+    MERAKI=1
+    if [ $MERAKI -eq 1 ]; then
+        alias prep='cd ~/co/router/yocto; source ~/co/router/yocto/meraki/meraki-init-build-env; cd ~/co/router'
+
+        autoload bashcompinit
+        bashcompinit
+        export PATH=~/co/router/scripts:$PATH
+        for f in ~/co/router/scripts/bash_completion.d/*; do source $f; done
+
+        # Allegedly this fixes weird issue with git being slow to do tab completion
+        __git_files () {
+            _wanted files expl 'local files' _files
+        }
+    fi
+
+fi

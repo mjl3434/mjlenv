@@ -7,8 +7,6 @@ set splitright      " do vertical splits on the right
 "set t_Co=256        " allows 256 bit colorschemes
 set hlsearch        " highlight all search matches on the page
 
-colorscheme elflord
-
 " Always display filename at bottom, this takes up 1 extra line
 set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set ls=2
@@ -35,4 +33,8 @@ if has("autocmd")
     autocmd FileType c,cpp,h,java,sh,pl	set cindent
     autocmd FileType html set tabstop=8 softtabstop=2 shiftwidth=2 noexpandtab
     autocmd FileType make set tabstop=8 sts=8 sw=8 noexpandtab
+endif
+
+if &background ==# 'dark'
+    colorscheme elflord
 endif
