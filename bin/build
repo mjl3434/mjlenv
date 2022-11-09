@@ -1,0 +1,34 @@
+#!/bin/bash
+
+for PLATFORM in "$@" 
+do
+    case $PLATFORM in
+
+    4)
+        cd ~/co/router
+        source yocto/meraki/meraki-init-build-env build-wired-cypress
+        MACHINE=wired-cypress bitbake meraki-image -c upload
+        ;;
+    21)
+        cd ~/co/router
+        source yocto/meraki/meraki-init-build-env build-wired-arm-qca
+        MACHINE=wired-arm-qca bitbake meraki-image -c upload
+        ;;
+
+    41)
+        cd ~/co/router
+        source yocto/meraki/meraki-init-build-env build-gateway-arm-qca
+        MACHINE=gateway-arm-qca bitbake meraki-image -c upload
+        ;;
+    51)
+        cd ~/co/router
+        source yocto/meraki/meraki-init-build-env build-gateway-cypress
+        MACHINE=gateway-cypress bitbake meraki-image -c upload
+        ;;
+    *)
+        echo "Error:"
+        echo "Error: Unknown platform number $PLATFORM. Cannot build!"
+        echo "Error:"
+        ;;
+    esac
+done

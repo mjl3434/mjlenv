@@ -10,15 +10,15 @@ export EDITOR="$VISUAL"
 export HISTSIZE=1000
 export HISTFILESIZE=2000
 
+PATH=$PATH:~/.mjlenv/bin
+
 SHELL_TYPE=$(basename $(echo $SHELL))
 if [ $SHELL_TYPE = 'zsh' ]; then
 
     # Settings related to Cisco Meraki
     MERAKI=1
     if [ $MERAKI -eq 1 ]; then
-        alias prep21='cd ~/co/router; source ~/co/router/yocto/meraki/meraki-init-build-env mg21'
-        alias prep41='cd ~/co/router; source ~/co/router/yocto/meraki/meraki-init-build-env mg41'
-        alias prep51='cd ~/co/router; source ~/co/router/yocto/meraki/meraki-init-build-env mg51'
+
 
         autoload bashcompinit
         bashcompinit
