@@ -29,6 +29,13 @@ if [ $SHELL_TYPE = 'zsh' ]; then
         __git_files () {
             _wanted files expl 'local files' _files
         }
+
+        fixssh() {
+            ssh-add -l
+            eval $(tmux show-env |sed -n 's/^\(SSH_[^=]*\)=\(.*\)/export \1="\2"/p')
+            ssh-add -l
+        }
     fi
 
 fi
+
