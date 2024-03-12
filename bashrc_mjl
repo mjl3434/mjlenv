@@ -3,6 +3,7 @@
 unalias ll 2>/dev/null
 alias ll='ls -l'
 alias vi='vim'
+alias rgc='rg -g "*.c" -g "*.cc" -g "*.cpp" -g "*.h" -g "*.hh" -g "*.hpp"'
 
 export VISUAL=vim
 export EDITOR="$VISUAL"

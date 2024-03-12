@@ -25,6 +25,16 @@ do
         source yocto/meraki/meraki-init-build-env build-gateway-cypress
         MACHINE=gateway-cypress bitbake meraki-image -c upload
         ;;
+    67)
+        cd ~/co/router
+        source yocto/meraki/meraki-init-build-env build-wired-arm64
+        MACHINE=wired-arm64 bitbake meraki-image -c upload
+        ;;
+    68)
+        cd ~/co/router
+        source yocto/meraki/meraki-init-build-env build-wired-arm64
+        MACHINE=wired-arm64 bitbake meraki-image -c upload
+        ;;
     *)
         echo "Error:"
         echo "Error: Unknown platform number $PLATFORM. Cannot build!"
