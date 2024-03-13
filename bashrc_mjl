@@ -19,7 +19,7 @@ if [ $SHELL_TYPE = 'zsh' ]; then
     # Settings related to Cisco Meraki
     MERAKI=1
     if [ $MERAKI -eq 1 ]; then
-        source meraki_init.sh
+        source ~/.mjlenv/meraki_init.sh
     fi
 
 fi
