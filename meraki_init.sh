@@ -1,9 +1,9 @@
-autoload bashcompinit
-bashcompinit
-export PATH=~/co/router/scripts:$PATH
-for f in ~/co/router/scripts/bash_completion.d/*; do source $f; done
+#autoload bashcompinit
+#bashcompinit
+#export PATH=~/co/router/scripts:$PATH
+#for f in ~/co/router/scripts/bash_completion.d/*; do source $f; done
 
-# Allegedly this fixes weird issue with git being slow to do tab completion
+# This fixes weird issue with git being slow to do tab completion
 __git_files () {
     _wanted files expl 'local files' _files
 }
@@ -14,7 +14,7 @@ fixssh() {
     ssh-add -l
 }
 
-TLFILE=/Users/mlarwill/bin/tl
-if [ -f $TLFILE ]; then
-    . $TLFILE
-fi
+#TLFILE=/Users/mlarwill/bin/tl
+#if [ -f $TLFILE ]; then
+#    . $TLFILE
+#fi
