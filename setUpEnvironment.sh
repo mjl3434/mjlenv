@@ -1,34 +1,49 @@
 #!/bin/bash
 
-BASHRC=$(echo ~)
-BASHRC="$BASHRC/.bashrc"
+HOME_DIR=$(echo ~)
+CURRENT_SHELL=$SHELL
+CURRENT_SHELL=${SHELL##*/}
 MJL_ENV_DIR=~/.mjlenv
 CUSTOM_BASHRC="$MJL_ENV_DIR/bashrc_mjl"
 
-# Check if there is a .bashrc file
-if [ -f $BASHRC ]; then
-	# Check if we already added our call to our custom bashrc script
-	FOUND=$(grep "$CUSTOM_BASHRC" $BASHRC)
+if [ $CURRENT_SHELL = "bash" ]; then
+    SHELL_RC=$HOME_DIR/.bashrc
+elif [ $CURRENT_SHELL = "zsh" ]; then
+    SHELL_RC=$HOME_DIR/.zshrc
 else
-	# There is no .bashrc file so create it
-	touch $BASHRC
-	FOUND=
+    echo "Error: Unknown shell type $SHELL"
 fi
 
-# If we don't have the code to call our custom bashrc script
-if [ "$FOUND" == "" ]; then
+# if we know the shell type we can find its rc file
+if [ "$SHELL_RC" != "" ]; then
 
-	# Then add it
-cat << FOOBAR >> $BASHRC
+    if [ -f $SHELL_RC ]; then
+        # Check if we already added our call to our custom bashrc script
+        FOUND=$(grep -c -m 1 $CUSTOM_BASHRC $SHELL_RC)
+
+    else
+        touch $SHELL_RC
+	FOUND=0
+    fi
+
+
+
+    # If the shell rc file does not already have lines to source our file, then add them
+    if [ $FOUND = 0 ]; then
+
+	# Append lines to the file
+cat <<EOF >> "$SHELL_RC"
 
 if [ -f $CUSTOM_BASHRC ]; then
-	. $CUSTOM_BASHRC
+    . $CUSTOM_BASHRC
 fi
-FOOBAR
+EOF
 
-	# And execute the custom script
-	. $CUSTOM_BASHRC
+        # And execute our custom rc file since it was not run automatically
+        . $CUSTOM_BASHRC
+    fi
 fi
+
 
 if [ ! -L ~/.vimrc ]; then
 	ln -s $MJL_ENV_DIR/vimrc ~/.vimrc
