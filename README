@@ -1,11 +1,14 @@
 # Installing first time
 -----------------------
 sudo apt install git
+git config --global user.name "Mark Larwill"
+git config --global user.email "larwill@gmail.com"
 cd ~
 git clone https://github.com/mjl3434/mjlenv.git ~/.mjlenv
+(Generate SSH keys, add public key to github)
 (maybe ssh-add, then ssh -A)
 git config --local user.name "Mark Larwill"
-git config --local user.email "larwill@gmail.com
+git config --local user.email "larwill@gmail.com"
 ssh -T git@github.com
 git remote set-url origin git@github.com:mjl3434/mjlenv.git
 ~/.mjlenv/setUpEnvironment.sh
