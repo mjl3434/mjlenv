@@ -26,8 +26,6 @@ if [ "$SHELL_RC" != "" ]; then
 	FOUND=0
     fi
 
-
-
     # If the shell rc file does not already have lines to source our file, then add them
     if [ $FOUND = 0 ]; then
 
