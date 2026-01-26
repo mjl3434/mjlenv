@@ -14,6 +14,11 @@ fixssh() {
     ssh-add -l
 }
 
+fixmods() {
+    git submodule sync --recursive
+    git submodule update --init --recursive 
+}
+
 #TLFILE=/Users/mlarwill/bin/tl
 #if [ -f $TLFILE ]; then
 #    . $TLFILE
