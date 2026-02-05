@@ -19,6 +19,15 @@ fixmods() {
     git submodule update --init --recursive 
 }
 
+format() {
+    pushd ~/co/router >/dev/null
+    FILES=$(git diff --name-only | egrep "^meraki/cellular_jolteon" | xargs)
+    echo "Clang formatting modified files: $FILES"
+    scripts/ci/clang-format.sh -i $FILES
+    echo "Clang formatting done."
+    popd >/dev/null
+}
+
 #TLFILE=/Users/mlarwill/bin/tl
 #if [ -f $TLFILE ]; then
 #    . $TLFILE
